@@ -16,18 +16,16 @@ class ToDoPage extends StatefulWidget {
 
 class _ToDoPageState extends State<ToDoPage> {
   ToDoDataBase db = ToDoDataBase();
-  // reference the hive box
+
   final _myBox = Hive.box('mybox');
   bool check = false;
   final _controller = TextEditingController();
 
   @override
   void initState() {
-    //if this is the first time opening the app create default data
     if (_myBox.get('TODOLIST') == null) {
       db.createInitialData();
     } else {
-      // there already exist data
       db.loadData();
     }
     super.initState();
@@ -95,9 +93,10 @@ class _ToDoPageState extends State<ToDoPage> {
     return Scaffold(
       backgroundColor: Colors.deepPurple[200],
       appBar: AppBar(
-        title: const Text(
-          'TO DO',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        title: Text(
+          '${db.toDoList.length} Task',
+          style:
+              const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
       ),
       floatingActionButton: FloatingActionButton(

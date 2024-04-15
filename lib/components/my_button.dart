@@ -10,7 +10,11 @@ class MyButton extends StatelessWidget {
       onPressed: onTap,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       color: Theme.of(context).primaryColor,
-      child: Text(text),
+      child: Text(
+        text,
+        style: const TextStyle(
+            color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+      ),
     );
   }
 }
